@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp") version "1.9.0-1.0.12"
 }
 
 android {
@@ -63,4 +64,6 @@ dependencies {
     implementation("androidx.compose.material:material-icons-extended")
 
     implementation("androidx.navigation:navigation-compose:2.7.7")
+    implementation ("io.github.raamcosta.compose-destinations:core:1.9.51")
+    ksp ("io.github.raamcosta.compose-destinations:ksp:1.9.51")
 }
