@@ -18,11 +18,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @Composable
-fun DetailScreen(itemId: String?) {
+fun DetailScreen(navController: NavController, itemId: String?) {
     val touristSpot = TouristSpotData.touristSpots.find { it.id == itemId }
 
     if (touristSpot != null) {
@@ -64,11 +66,23 @@ fun DetailScreen(itemId: String?) {
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate("new/${touristSpot.id}")
+                },
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text("Editar")
+            }
+
+            Button(
+                onClick = {
+                    navController.navigateUp()
+                },
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text("Volver")
             }
+
         }
     } else {
         Text("Lugar turístico no encontrado")
@@ -78,5 +92,8 @@ fun DetailScreen(itemId: String?) {
 @Preview
 @Composable
 fun DetailScreenPreview() {
-    DetailScreen(itemId = TouristSpotData.touristSpots.first().id)
+    DetailScreen(
+        navController = rememberNavController(),
+        itemId = TouristSpotData.touristSpots.first().id
+    )
 }

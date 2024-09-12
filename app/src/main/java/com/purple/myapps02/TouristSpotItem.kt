@@ -1,6 +1,5 @@
 package com.purple.myapps02
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -17,16 +16,20 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @Composable
-fun TouristSpotItem(touristSpot: TouristSpot, onClick: () -> Unit = {}) {
+fun TouristSpotItem(navController: NavController, touristSpot: TouristSpot) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { onClick.invoke() }
+            .clickable {
+                navController.navigate("detail/${touristSpot.id}")
+            }
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -71,6 +74,7 @@ fun TouristSpotItem(touristSpot: TouristSpot, onClick: () -> Unit = {}) {
 @Composable
 fun TouristSpotItemPreview() {
     TouristSpotItem(
+        navController = rememberNavController(),
         touristSpot = TouristSpotData.touristSpots.first()
     )
 }

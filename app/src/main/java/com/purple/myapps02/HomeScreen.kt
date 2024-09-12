@@ -18,9 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,7 +40,9 @@ fun HomeScreen() {
                     .padding(16.dp)
             )
             Button(
-                onClick = { },
+                onClick = {
+                    navController.navigate("new")
+                },
                 modifier = Modifier
                     .padding(16.dp)
             ) {
@@ -52,7 +56,7 @@ fun HomeScreen() {
                 .padding(16.dp)
         ) {
             items(TouristSpotData.touristSpots) { touristSpot ->
-                TouristSpotItem(touristSpot)
+                TouristSpotItem(navController, touristSpot)
             }
         }
     }
@@ -61,5 +65,5 @@ fun HomeScreen() {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreen(navController = rememberNavController())
 }

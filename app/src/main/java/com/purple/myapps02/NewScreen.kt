@@ -9,10 +9,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import java.util.UUID
 
 @Composable
-fun NewScreen() {
+fun NewScreen(navController: NavController, itemId: String? = null) {
+
+    val isEditMode = itemId != null
+
     var title by remember { mutableStateOf("") }
     var shortDescription by remember { mutableStateOf("") }
     var description by remember { mutableStateOf("") }
@@ -25,7 +30,10 @@ fun NewScreen() {
             .background(Color.White)
             .padding(16.dp),
     ) {
-        Text("Crear Nuevo Lugar Turístico", style = MaterialTheme.typography.headlineSmall)
+        Text(
+            "${if (isEditMode) "Editar" else "Nuevo"} Lugar Turístico",
+            style = MaterialTheme.typography.headlineSmall
+        )
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -81,7 +89,22 @@ fun NewScreen() {
 //                navController.navigateUp() // Volver a HomeScreen después de crear el ítem
             }
         ) {
-            Text("Crear")
+            if (isEditMode) {
+                Text("Guardar")
+            } else {
+                Text("Crear")
+            }
+        }
+
+        Button(
+            onClick = {
+                navController.popBackStack(
+                    "home",
+                    inclusive = false
+                )
+            }
+        ) {
+            Text("Volver")
         }
     }
 }
@@ -89,5 +112,5 @@ fun NewScreen() {
 @Preview
 @Composable
 fun NewScreenPreview() {
-    NewScreen()
+    NewScreen(navController = rememberNavController())
 }
