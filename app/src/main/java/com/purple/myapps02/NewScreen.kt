@@ -14,7 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import java.util.UUID
 
 @Composable
-fun NewScreen(navController: NavController, itemId: String? = null) {
+fun NewScreen(itemId: String? = null) {
 
     val isEditMode = itemId != null
 
@@ -99,12 +99,12 @@ fun NewScreen(navController: NavController, itemId: String? = null) {
         Button(
             onClick = {
                 if (isEditMode) {
-                    navController.popBackStack(
+                    /*navController.popBackStack(
                         NavigationItem.Home.route,
                         inclusive = false
-                    )
+                    )*/
                 } else {
-                    navController.navigateUp()
+//                    navController.navigateUp()
                 }
             }
         ) {
@@ -116,5 +116,5 @@ fun NewScreen(navController: NavController, itemId: String? = null) {
 @Preview
 @Composable
 fun NewScreenPreview() {
-    NewScreen(navController = rememberNavController())
+    NewScreen()
 }

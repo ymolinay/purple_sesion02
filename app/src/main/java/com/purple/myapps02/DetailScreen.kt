@@ -24,7 +24,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @Composable
-fun DetailScreen(navController: NavController, itemId: String?) {
+fun DetailScreen(itemId: String?) {
     val touristSpot = TouristSpotData.touristSpots.find { it.id == itemId }
 
     if (touristSpot != null) {
@@ -67,7 +67,7 @@ fun DetailScreen(navController: NavController, itemId: String?) {
 
             Button(
                 onClick = {
-                    navController.navigate("${NavigationItem.New.route}/${touristSpot.id}")
+//                    navController.navigate("${NavigationItem.New.route}/${touristSpot.id}")
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -76,7 +76,7 @@ fun DetailScreen(navController: NavController, itemId: String?) {
 
             Button(
                 onClick = {
-                    navController.navigateUp()
+//                    navController.navigateUp()
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
@@ -93,7 +93,7 @@ fun DetailScreen(navController: NavController, itemId: String?) {
 @Composable
 fun DetailScreenPreview() {
     DetailScreen(
-        navController = rememberNavController(),
+//        navController = rememberNavController(),
         itemId = TouristSpotData.touristSpots.first().id
     )
 }

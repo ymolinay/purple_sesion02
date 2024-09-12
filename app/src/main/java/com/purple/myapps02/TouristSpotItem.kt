@@ -22,13 +22,13 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 
 @Composable
-fun TouristSpotItem(navController: NavController, touristSpot: TouristSpot) {
+fun TouristSpotItem(touristSpot: TouristSpot) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("${NavigationItem.Detail.route}/${touristSpot.id}")
+//                navController.navigate("${NavigationItem.Detail.route}/${touristSpot.id}")
             }
     ) {
         Row(
@@ -74,7 +74,6 @@ fun TouristSpotItem(navController: NavController, touristSpot: TouristSpot) {
 @Composable
 fun TouristSpotItemPreview() {
     TouristSpotItem(
-        navController = rememberNavController(),
         touristSpot = TouristSpotData.touristSpots.first()
     )
 }

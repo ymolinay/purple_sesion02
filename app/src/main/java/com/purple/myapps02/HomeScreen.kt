@@ -22,7 +22,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen() {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavController) {
             )
             Button(
                 onClick = {
-                    navController.navigate(NavigationItem.New.route)
+//                    navController.navigate(NavigationItem.New.route)
                 },
                 modifier = Modifier
                     .padding(16.dp)
@@ -56,7 +56,8 @@ fun HomeScreen(navController: NavController) {
                 .padding(16.dp)
         ) {
             items(TouristSpotData.touristSpots) { touristSpot ->
-                TouristSpotItem(navController, touristSpot)
+//                TouristSpotItem(navController, touristSpot)
+                TouristSpotItem(touristSpot)
             }
         }
     }
@@ -65,5 +66,5 @@ fun HomeScreen(navController: NavController) {
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen(navController = rememberNavController())
+    HomeScreen()
 }

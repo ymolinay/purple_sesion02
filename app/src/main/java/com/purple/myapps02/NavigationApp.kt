@@ -17,7 +17,8 @@ fun NavigationApp() {
         composable(
             route = NavigationItem.Home.route
         ) {
-            HomeScreen(navController)
+//            HomeScreen(navController)
+            HomeScreen()
         }
 
         composable(
@@ -29,13 +30,13 @@ fun NavigationApp() {
             )
         ) {
             val itemId = it.arguments?.getString("itemId")
-            DetailScreen(navController, itemId)
+            DetailScreen(itemId)
         }
 
         composable(
             route = NavigationItem.New.route
         ) {
-            NewScreen(navController)
+            NewScreen()
         }
 
         composable(
@@ -47,7 +48,7 @@ fun NavigationApp() {
             )
         ) {
             val itemId = it.arguments?.getString("itemId")
-            NewScreen(navController, itemId)
+            NewScreen(itemId)
         }
 
     }
