@@ -21,15 +21,19 @@ fun NavigationApp() {
         }
 
         composable(
-            route = "${NavigationItem.Detail.route}/{itemId}",
+            route = "${NavigationItem.Detail.route}/{itemId}/{extra}",
             arguments = listOf(
                 navArgument("itemId") {
                     type = NavType.StringType
+                },
+                navArgument("extra") {
+                    type = NavType.IntType
                 }
             )
         ) {
             val itemId = it.arguments?.getString("itemId")
-            DetailScreen(navController, itemId)
+            val extra = it.arguments?.getInt("extra")
+            DetailScreen(navController, itemId, extra)
         }
 
         composable(
