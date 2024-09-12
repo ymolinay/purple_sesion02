@@ -20,9 +20,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.purple.myapps02.destinations.DetailScreenDestination
+import com.purple.myapps02.destinations.NewScreenDestination
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
+@Destination(start = true)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navigator: DestinationsNavigator? = null) {
     Column(
         modifier = Modifier
             .fillMaxSize()
