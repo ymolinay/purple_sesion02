@@ -67,7 +67,7 @@ fun DetailScreen(navController: NavController, itemId: String?) {
 
             Button(
                 onClick = {
-                    navController.navigate("new/${touristSpot.id}")
+                    navController.navigate("${NavigationItem.New.route}/${touristSpot.id}")
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {

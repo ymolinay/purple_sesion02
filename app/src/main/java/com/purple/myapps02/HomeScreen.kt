@@ -41,7 +41,7 @@ fun HomeScreen(navController: NavController) {
             )
             Button(
                 onClick = {
-                    navController.navigate("new")
+                    navController.navigate(NavigationItem.New.route)
                 },
                 modifier = Modifier
                     .padding(16.dp)

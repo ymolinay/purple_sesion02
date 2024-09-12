@@ -28,7 +28,7 @@ fun TouristSpotItem(navController: NavController, touristSpot: TouristSpot) {
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                navController.navigate("detail/${touristSpot.id}")
+                navController.navigate("${NavigationItem.Detail.route}/${touristSpot.id}")
             }
     ) {
         Row(

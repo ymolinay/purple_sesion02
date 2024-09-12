@@ -98,10 +98,14 @@ fun NewScreen(navController: NavController, itemId: String? = null) {
 
         Button(
             onClick = {
-                navController.popBackStack(
-                    "home",
-                    inclusive = false
-                )
+                if (isEditMode) {
+                    navController.popBackStack(
+                        NavigationItem.Home.route,
+                        inclusive = false
+                    )
+                } else {
+                    navController.navigateUp()
+                }
             }
         ) {
             Text("Volver")

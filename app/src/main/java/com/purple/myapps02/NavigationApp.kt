@@ -15,13 +15,13 @@ fun NavigationApp() {
     NavHost(navController = navController, startDestination = "home") {
 
         composable(
-            route = "home"
+            route = NavigationItem.Home.route
         ) {
             HomeScreen(navController)
         }
 
         composable(
-            route = "detail/{itemId}",
+            route = "${NavigationItem.Detail.route}/{itemId}",
             arguments = listOf(
                 navArgument("itemId") {
                     type = NavType.StringType
@@ -33,13 +33,13 @@ fun NavigationApp() {
         }
 
         composable(
-            route = "new"
+            route = NavigationItem.New.route
         ) {
             NewScreen(navController)
         }
 
         composable(
-            route = "new/{itemId}",
+            route = "${NavigationItem.New.route}/{itemId}",
             arguments = listOf(
                 navArgument("itemId") {
                     type = NavType.StringType
