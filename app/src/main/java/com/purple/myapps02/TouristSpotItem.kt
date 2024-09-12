@@ -20,15 +20,20 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.purple.myapps02.destinations.DetailScreenDestination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Composable
-fun TouristSpotItem(touristSpot: TouristSpot) {
+fun TouristSpotItem(navigator: DestinationsNavigator? = null, touristSpot: TouristSpot) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
 //                navController.navigate("${NavigationItem.Detail.route}/${touristSpot.id}")
+                navigator?.navigate(DetailScreenDestination(
+                    itemId = touristSpot.id
+                ))
             }
     ) {
         Row(

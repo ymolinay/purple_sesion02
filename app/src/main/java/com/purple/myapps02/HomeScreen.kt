@@ -47,6 +47,7 @@ fun HomeScreen(navigator: DestinationsNavigator? = null) {
             Button(
                 onClick = {
 //                    navController.navigate(NavigationItem.New.route)
+                    navigator?.navigate(NewScreenDestination())
                 },
                 modifier = Modifier
                     .padding(16.dp)
@@ -62,7 +63,7 @@ fun HomeScreen(navigator: DestinationsNavigator? = null) {
         ) {
             items(TouristSpotData.touristSpots) { touristSpot ->
 //                TouristSpotItem(navController, touristSpot)
-                TouristSpotItem(touristSpot)
+                TouristSpotItem(navigator, touristSpot)
             }
         }
     }
