@@ -11,12 +11,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.purple.myapps02.destinations.HomeScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import java.util.UUID
 
 @Destination
 @Composable
-fun NewScreen(itemId: String? = null) {
+fun NewScreen(navigator: DestinationsNavigator? = null, itemId: String? = null) {
 
     val isEditMode = itemId != null
 
@@ -105,8 +107,13 @@ fun NewScreen(itemId: String? = null) {
                         NavigationItem.Home.route,
                         inclusive = false
                     )*/
+                    navigator?.popBackStack(
+                        route = HomeScreenDestination,
+                        inclusive = false
+                    )
                 } else {
 //                    navController.navigateUp()
+                    navigator?.navigateUp()
                 }
             }
         ) {

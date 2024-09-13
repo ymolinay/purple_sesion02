@@ -20,11 +20,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
+import com.purple.myapps02.destinations.NewScreenDestination
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination
 @Composable
-fun DetailScreen(itemId: String?) {
+fun DetailScreen(navigator: DestinationsNavigator? = null, itemId: String?) {
     val touristSpot = TouristSpotData.touristSpots.find { it.id == itemId }
 
     if (touristSpot != null) {
@@ -68,6 +70,7 @@ fun DetailScreen(itemId: String?) {
             Button(
                 onClick = {
 //                    navController.navigate("${NavigationItem.New.route}/${touristSpot.id}")
+                    navigator?.navigate(NewScreenDestination(touristSpot.id))
                 },
                 modifier = Modifier.fillMaxWidth()
             ) {
